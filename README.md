@@ -1,6 +1,6 @@
 # wicked_pdf_printer
 
-Run the Wicked PDF Ruby gem in a separate Docker image and connect to to the PDF printer using DRb.
+Run the Wicked PDF Ruby gem in a separate Docker container and connect to to the PDF printer using DRb.
 
 ## Problem and solution
 
