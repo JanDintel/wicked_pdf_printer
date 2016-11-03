@@ -1,0 +1,5 @@
+#!/bin/bash
+
+#OLD_CONTAINER_ID=$(docker ps | grep "wicked_pdf_printer-server:latest" | cut -f1 -d " ")
+
+docker run -it -p 8787:8787 wicked_pdf_printer-server:latest /bin/bash

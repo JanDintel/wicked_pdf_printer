@@ -1,0 +1,3 @@
+#!/bin/bash
+
+docker build -f Dockerfile-server -t wicked_pdf_printer-server:latest .
