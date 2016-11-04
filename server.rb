@@ -61,10 +61,10 @@ WickedPdf.config = {
 }
 
 class PDFPrinterServer
-  def print(body)
+  def print(body, options = {})
     $stdout.puts('Generating PDF...')
     tainted_body = body.taint
-    pdf_blob     = WickedPdf.new.pdf_from_string(tainted_body, page_size: 'A4')
+    pdf_blob     = WickedPdf.new.pdf_from_string(tainted_body, options)
     $stdout.puts('Generated PDF!')
     pdf_blob
   end

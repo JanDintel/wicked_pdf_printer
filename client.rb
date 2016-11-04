@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 require 'drb'
+require 'fileutils'
 require 'bundler'
 Bundler.require(:default, :development)
 
@@ -15,11 +16,13 @@ def write_file(path, blob)
 end
 
 def save(filename, blob)
+  FileUtils.mkdir_p('tmp')
   save_path = File.join('tmp', filename)
   write_file(save_path, blob)
 end
 
 def save_and_open(filename, blob)
+  FileUtils.mkdir_p('tmp')
   save_path = File.join('tmp', filename)
   write_file(save_path, blob)
   Launchy.open(save_path.to_s)
@@ -29,7 +32,7 @@ pdf_printer_server = DRbObject.new_with_uri(SERVER_URI)
 
 body = '<h1>Hello world</h1>'
 
-pdf_document = pdf_printer_server.print(body)
+pdf_document = pdf_printer_server.print(body, page_size: 'A4')
 
 if ENV['DOCKER']
   save("#{Time.now.to_i}.pdf", pdf_document)
